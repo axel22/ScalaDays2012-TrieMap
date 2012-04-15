@@ -1,0 +1,22 @@
+
+
+# files ending with `~`
+*~
+*.*~
+**/*.*~
+
+
+# garbage
+*.scala#
+tmp
+
+
+# project files
+project/boot
+target
+
+
+# managed libraries
+lib_managed/
+
+
