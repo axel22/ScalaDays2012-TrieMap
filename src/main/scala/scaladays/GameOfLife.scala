@@ -344,7 +344,7 @@ object GameOfLifeDemo extends GameOfLifeUtils {
   
   /* config */
   
-  def blockSize = 10
+  def blockSize = 20
   
   val sidelength = sys.props("sidelength").toInt
   
@@ -389,7 +389,7 @@ object GameOfLifeDemo extends GameOfLifeUtils {
         var i, j = 0
         while (j < blockSize) {
           while (i < blockSize) {
-            val col = if (arr(j * blockSize + i)) 0xff005599 else 0xffffffff
+            val col = if (arr(j * blockSize + i)) 0xff005599 else 0xffcccccc
             val absx = xoff + i
             val absy = yoff + j
             if (absx >= 0 && absx < width && absy >= 0 && absy < height) raster(absy * width + absx) = col
