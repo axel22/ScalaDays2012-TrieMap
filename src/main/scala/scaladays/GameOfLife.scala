@@ -311,9 +311,24 @@ trait GameOfLifeUtils {
 
 
 object GameOfLifeDemo extends GameOfLifeUtils {
+  /* config */
+  
+  lazy val blockSize = sys.props("blocksize").toInt
+  
+  val sidelength = sys.props("sidelength").toInt
+  
+  val parlevel = sys.props("parlevel").toInt
+  
+  val refreshrate = sys.props("refreshrate").toInt
+  
+  val tasksupport = new parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(parlevel))
+  
   val width = 1440
+  
   val height = 960
+  
   var buffer = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR)
+  
   val display = new Display
   
   class Display extends Component {
@@ -341,18 +356,6 @@ object GameOfLifeDemo extends GameOfLifeUtils {
     frame.open()
     simulator.start()
   }
-  
-  /* config */
-  
-  def blockSize = 20
-  
-  val sidelength = sys.props("sidelength").toInt
-  
-  val parlevel = sys.props("parlevel").toInt
-  
-  val refreshrate = sys.props("refreshrate").toInt
-  
-  val tasksupport = new parallel.ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(parlevel))
   
   val simulator = new Thread {
     val raster = new Array[Int](width * height)
