@@ -27,6 +27,7 @@ trait GameOfLifeUtils {
   
   def update(g: Int, x: Int, y: Int, v: Boolean) {
     val block = getBlock(g, x, y)
+    block.cells((g - 1) % 2)((y % blockSize) * blockSize + (x % blockSize)) = v
     block.cells(g % 2)((y % blockSize) * blockSize + (x % blockSize)) = v
   }
   
@@ -51,7 +52,7 @@ trait GameOfLifeUtils {
     def simulate(generation: Int) {
       updateCells(generation)
       addNeighbours(generation)
-      //checkRemove(generation)
+      checkRemove(generation)
     }
     
     def checkRemove(g: Int) {
@@ -389,7 +390,9 @@ object GameOfLifeDemo extends GameOfLifeUtils {
         while (j < blockSize) {
           while (i < blockSize) {
             val col = if (arr(j * blockSize + i)) 0xff005599 else 0xffffffff
-            raster((yoff + j) * width + xoff + i) = col
+            val absx = xoff + i
+            val absy = yoff + j
+            if (absx >= 0 && absx < width && absy >= 0 && absy < height) raster(absy * width + absx) = col
             i += 1
           }
           i = 0
