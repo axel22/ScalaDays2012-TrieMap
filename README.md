@@ -1,11 +1,10 @@
-
 # Game of Life using `scala.collection.concurrent.TrieMap`
 
 This demo shows how to use a Ctrie map implemenation to code an efficient Game of Life simulation.
 
 ## Usage
 
-Run `sbt -sbt-snapshot`. This will ensure that Scala 2.10.0-SNAPSHOT version is used.
+Run `./sbt -sbt-snapshot`. This will ensure that Scala 2.10.0-SNAPSHOT version is used.
 Thank you, Paul Phillips, for your excellent script.
 
 After that:
