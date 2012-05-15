@@ -445,7 +445,7 @@ object GameOfLifeBench extends testing.Benchmark with GameOfLifeUtils {
     grid.tasksupport = tasksupport
     for (g <- 1 to generations) {
       for ((pos, block) <- grid) block.simulate(g)
-      //println("%d: size = %d".format(g, -1))
+      println("%d: size = %d".format(g, grid.size))
     }
   }
   
